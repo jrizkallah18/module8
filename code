@@ -1,0 +1,162 @@
+
+"""
+Problem 1 – Write a function that takes two inputs
+from a user and prints whether they are equal or not.
+
+"""
+
+num1 = int(input("Please enter your first number. "))
+num2 = int(input("Please enter your second number. "))
+
+def equal(a, b): # I created a simple function the has a if/else statement to check whether the users input are equal to each other or not.
+    if a == b:
+        print("The numbers you have entered are equal to eachother!")
+    else:
+        print("The numbers you have entered are not equal to eachother. ")
+
+
+equal(num1, num2) # Called the function and used the user inputs as arguments.
+
+
+
+
+"""
+#Problem 2 – Write a function that takes two inputs from a user and
+#prints whether the sum is greater than 10, less than 10, or equal to 10.
+
+
+num1 = int(input("Please enter your first number. "))
+num2 = int(input("Please enter your second number. "))
+
+def sum(a, b): # I created a simple function the has a if/else statement to check whether the sum of the users input are greatert than, less than, or equal to 10.
+    c = a + b
+    if c > 10: # Checks if sum is greater than 10.
+        print("The sum of your two numbers is greater then 10!")
+    elif c < 10: # Checks if sum is less than 10.
+        print("The sum of your two numbers is less hen 10.")
+    else: # Checks if sum is equal to 10.
+        print("The sum of your two numbers is equal to 10. ")
+
+
+sum(num1, num2) # Called the function and used the user inputs as arguments.
+
+
+"""
+#Problem 3 - Write a function that takes a list and
+#prints if the value 5 is in that list.
+"
+
+list = [4, 8 ,31 ,47 ,9, 5, 11] # List with some integers.
+
+def checkForFive(ls): # Here I created a function that takes ls as a parameter and includes an if else statement to check whether 
+    if 5 in ls:       # the list we put as an argument on function call includes the number 5.
+        print("The number 5 is in the list!")
+    else: 
+        print("The number 5 is not in the list.")
+
+checkForFive(list) # Calling the list the function with the list above as an argument.
+
+
+
+
+
+
+"""
+#Problem 4 – Write a function that takes a year as a parameter and returns True if the year
+#is a leap year, False if it is otherwise. Consider the requirements of a leap year:
+	#•	The year is evenly divisible by 4
+	#•	If the year can be evenly divided by 100 it is NOT a leap year, unless:
+	#•	#If the year is also evenly divisible by 400, then it is a leap year.
+
+"""
+year = int(input("Please enter a year to check if it is a leap year! ")) # Asks user for a year.
+
+def leapYearCheck(year): # Here I created a function to check if a given year is a leap year or not.
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0): # If a number is evenly divisible by 4 and evenly divisible by 100 or if it is evenly divisible by 400 it is a leap year.
+        return True 
+    else: 
+        return False
+
+print(leapYearCheck(year)) # I called the function using the user input value in year as an argrument.
+
+
+
+
+
+
+
+""" 
+#Problem 5 – Given the following working code:
+
+#Write a function that checks whether your game character has picked up all the items needed to
+#perform certain tasks and checks against any status debuffs. Confirm checks with print statements.
+
+#Game Character has the following item list: [pan, paper, idea, rope, groceries]
+#Game Character has the following status debuffs: [slow]
+
+#Task 1: Climb a mountain – needs rope, coat, and first aid kit, cannot have slow
+
+#Task 2: Cook a meal – needs pan, groceries, cannot have small
+
+#Task 3: Write a book – needs pen, paper, idea, cannot have confusion
+
+
+"""
+
+
+def can_perform_task(character, required_items, forbidden_debuffs, task_name):
+    for item in required_items: # Checks if character has all needed items.
+        if item not in character.weapons:
+            print(f"Cannot perform {task_name} - Missing item: {item}")
+            return False
+
+    for debuff in forbidden_debuffs: # This checks if the character has any forbidden debuffs.
+        if debuff in character.weaknesses:
+            print(f"Cannot perform {task_name} - Status debuff: {debuff}")
+            return False
+
+    print(f"Can perform {task_name}")
+    return True
+
+
+
+class character:
+    def __init__(self, nickname, weapons, weaknesses):
+        self.nickname = nickname
+        self.weapons = weapons
+        self.weaknesses = weaknesses
+    
+    def get_model(self):
+        return self.nickname
+    
+    def get_year(self):
+        return self.weapons
+    
+    def get_color(self):  
+        return self. weaknesses    
+    
+    def profile(self): 
+        return self.nickname, self.weapons, self. weaknesses
+    
+player1 = character('','','')
+player1.nickname = 'Dragon Slayer'
+player1.weapons = ['pan', 'paper', 'idea', 'rope', 'groceries']
+player1.weaknesses = ['slow']
+
+for item in player1.weapons:   
+    print("Item: ", item)
+
+for debuff in player1.weaknesses:    
+    print("Debuff: ", debuff)
+
+
+can_perform_task(player1, ['rope', 'coat', 'first aid kit'], ['slow'], "Climb a mountain")  # Task 1: Climb a mountain.
+
+can_perform_task(player1, ['pan', 'groceries'], ['small'], "Cook a meal") # Task 2: Cook a meal.
+
+can_perform_task(player1, ['pen', 'paper', 'idea'], ['confusion'], "Write a book") # Task 2: Cook a meal.
+
+
+
+
+
